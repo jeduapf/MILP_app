@@ -1,14 +1,3 @@
----
-
-layout: page
-title: Electricity Production Optimizer
-description: Optimizing electricity production from thermal and hydro plants
-img: assets/img/optimizer.png
-lang: en
-importance: 3
-category: project
------------------
-
 ## Introduction
 
 The **Electricity Production Optimizer** is an interactive web application developed with **Streamlit** and **Gurobi MILP**.
