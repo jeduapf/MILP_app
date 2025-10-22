@@ -33,24 +33,20 @@ subject to:
 * Demand satisfaction:
 
 $$
-\sum_{i \in \text{thermal}} p_{i,t} + \sum_{j \in \text{hydro}} p_{j,t} = D_t \quad \forall t
+\sum_{t=1}^{T} P_{t,p} \geq D_p \quad \forall p \in \{1, \ldots, P\}
 $$
 
-* Thermal generation limits:
+* Generation limits:
 
 $$
-p_{i,\min} \cdot u_{i,t} \le p_{i,t} \le p_{i,\max} \cdot u_{i,t}
-$$
-
-* Hydro reservoir constraints:
-
-$$
-V_{j,t+1} = V_{j,t} - p_{j,t} + P_{j,t}^{\text{pump}}
+N_{t,p} \cdot P^{\min}_t \leq P_{t,p} \leq N_{t,p} \cdot P^{\max}_t \quad \forall t, p
 $$
 
 * Binary variables for start-up and shut-down decisions for thermal plants
 
 * Optional constraints for pumping and cyclic operation
+
+* Etc.
 
 ---
 
