@@ -349,7 +349,7 @@ plants = {}
 st.sidebar.subheader("📂 Upload Custom Configurations")
 
 # Expander for demand JSON instructions
-with st.sidebar.expander("ℹ️ Demand JSON Instructions", expanded=True):
+with st.sidebar.expander("ℹ️ Demand JSON Instructions", expanded=False):
     st.write("Your demand JSON must be structured as follows:")
     st.code("""
 {
@@ -366,7 +366,7 @@ uploaded_demand = st.sidebar.file_uploader(
 )
 
 # Expander for plants JSON instructions
-with st.sidebar.expander("ℹ️ Plants JSON Instructions", expanded=True):
+with st.sidebar.expander("ℹ️ Plants JSON Instructions", expanded=False):
     st.write("Your plants JSON must be structured as follows:")
     st.code("""
 {
