@@ -268,6 +268,64 @@ def optimize(demand_df, plants, reserve_pct, cyclic, include_pumping):
         st.error(f"❌ Error during optimization: {str(e)}")
         st.code(traceback.format_exc())
 
+def footnote(img_path, name, year, version, link):
+    """Adiciona um rodapé estiloso com imagem e texto"""
+    import base64
+    import streamlit as st
+
+    with open(img_path, "rb") as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode()
+
+    st.markdown("---")
+    st.markdown(f"""
+    <style>
+    .footer-container {{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius: 12px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+        font-family: 'Comic Sans MS', 'Cursive', sans-serif;
+        background-color: transparent;
+    }}
+
+    .footer-container:hover {{
+        background-color: #FFFFFF; /* white background on hover */
+        box-shadow: -8px 0 20px rgba(0,0,0,0.3);
+        transform: translateX(-2px);
+    }}
+
+    .footer-container a {{
+        text-decoration: none;
+    }}
+
+    .footer-text {{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1rem;
+        color: #333333; /* always dark gray text */
+        font-weight: bold;
+    }}
+    </style>
+
+    <div class="footer-container">
+        <a href="{link}" target="_blank">
+            <img src="data:image/png;base64,{b64}" width="150" style="border-radius:50%;">
+        </a>
+        <div class="footer-text">
+            <span>{name}</span>
+            <span>{year}</span>
+            <span>v{version}</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+
 # ---------------------- Functions End ----------------------
 
 # ---------------------- Load configurations Start ----------------------
@@ -581,8 +639,7 @@ with tab1:
             st.markdown(f"**Example (Hydro plants: {', '.join(hydro_plants)}):**")
             water_example = " + ".join([f"3000 \\cdot {plants[h]['vAbai']:.2f} \\cdot N_{{{h},p}} \\cdot H_p" for h in hydro_plants[:2]])
             st.latex(f"\\text{{Total Production Energy}} \\geq \\text{{Total Demand Energy}} + ({water_example} + \\ldots)")
-    
-    st.divider()               
+                 
 
 # ---------------------- Math Definitions End ----------------------
 
@@ -733,3 +790,5 @@ with tab2:
         )
         
 # ---------------------- Optimization Results End ----------------------
+
+footnote("cartoon_me.png", "José ALVES", "2025", "1.0.0", "https://jeduapf.github.io/")
