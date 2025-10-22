@@ -1,0 +1,29 @@
+{
+  "periods": [
+    {
+      "name": "0h-6h",
+      "hours": 6,
+      "demand_mw": 15000
+    },
+    {
+      "name": "6h-9h",
+      "hours": 3,
+      "demand_mw": 30000
+    },
+    {
+      "name": "9h-15h",
+      "hours": 6,
+      "demand_mw": 25000
+    },
+    {
+      "name": "15h-18h",
+      "hours": 3,
+      "demand_mw": 40000
+    },
+    {
+      "name": "18h-24h",
+      "hours": 6,
+      "demand_mw": 27000
+    }
+  ]
+}
